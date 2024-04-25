@@ -16,7 +16,7 @@ def about():
     return render_template('about.html', data=data)
 
 
-@app.route('/accidentmap.html')
+@app.route('/accidentmap')
 def accidentmap():
     #load a current view of the data
     f = open("data/traffic_crashes.json", "r")
@@ -24,7 +24,7 @@ def accidentmap():
     f.close()
 
 
-    return render_template('accidentmap.html', data=data)
+    return render_template('accidentmap', data=data)
 
 @app.route('/speedlimits.html')
 def speedlimits():
@@ -34,11 +34,11 @@ def speedlimits():
     f.close()
 
 
-    return render_template('speedlimits.html', data=data)
+    return render_template('speedlimits', data=data)
 
 
 
-@app.route('/trafficcontrols.html')
+@app.route('/trafficcontrols')
 def trafficcontrols():
     #load a current view of the data
     f = open("data/traffic_crashes.json", "r")
