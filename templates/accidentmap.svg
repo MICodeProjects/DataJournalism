@@ -2,7 +2,9 @@
 
      <text x="250" y="250" text-anchor="middle">Insert svg map here</text>
 
-
+# top left = 42.055459, -87.940923
+# bottom right = 41.640921, -87.524904
+# viewbox = "0 0 1861.5 2529.5"
      
 
 </svg>
