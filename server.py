@@ -54,9 +54,31 @@ def graph(graph_type):
 
     
     #Filter and reformat data for ease of access in the template
+    data_length = len(data)
+    piechart_data = {"total":data_length}
+    barchart_data = {}
+    for crash in data.keys():
+        val = data[crash][graph_type]
 
+        # pie chart data sorting. If that type is not in the list, add it. Otherwise, add a tick. (out of total)
+        if val not in piechart_data:
+            piechart_data[val] = 1
+        else:
+            piechart_data[val] +=1
+        
+        # barchart data sorting. Average injuries on y axis, so x axis has val
+        if val not in barchart_data:
+            barchart_data[val] = data[crash]["injuries_total"]
+        else:
+            barchart_data[val]+=data[crash]["injuries_total"]
+    
+    # get average injuries in barchart data
+    for crash in barchart_data:
+        barchart_data[crash] = barchart_data[crash]/data_length
+    barchart_data_list = [(k, v) for k, v in barchart_data.items()]
+    barchart_data_list.sort()
    
-    return render_template('graph.html', data=data)
+    return render_template('graph.html', data=data, barchart_data=barchart_data_list, title=graph_type, piechart_data=piechart_data)
 
 
 app.run(debug=True)
