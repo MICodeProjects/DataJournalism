@@ -2,6 +2,7 @@ from flask import Flask
 from flask import request
 from flask import render_template
 import json
+import math
 app = Flask(__name__, static_url_path='', static_folder='static')
 
 @app.route('/')
@@ -55,7 +56,7 @@ def graph(graph_type):
     
     #Filter and reformat data for ease of access in the template
     data_length = len(data)
-    piechart_data = {"total":data_length}
+    piechart_data = {}
     barchart_data = {}
     for crash in data.keys():
         val = data[crash][graph_type]
@@ -72,11 +73,20 @@ def graph(graph_type):
         else:
             barchart_data[val]+=data[crash]["injuries_total"]
     
+    # turn pie chart data into percents, then sort by biggest to smallest.
+    for crash in piechart_data:
+        piechart_data[crash] = round((piechart_data[crash]/data_length)*100)
+    piechart_data_list = [(k, v) for k, v in piechart_data.items()]
+    piechart_data_list.sort()
+    
     # get average injuries in barchart data
     for crash in barchart_data:
         barchart_data[crash] = barchart_data[crash]/data_length
     barchart_data_list = [(k, v) for k, v in barchart_data.items()]
     barchart_data_list.sort()
+    
+    print(barchart_data_list)
+    print(piechart_data)
    
     return render_template('graph.html', data=data, barchart_data=barchart_data_list, title=graph_type, piechart_data=piechart_data)
 
