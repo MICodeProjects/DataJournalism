@@ -9,7 +9,7 @@ for line in lines[1::]:
     line = line.split(",")
 
 
-    dict1[line[0]] = {"speed_limit":int(line[1]), "control_dev":line[2], "weather":line[3], "lighting":line[4],"crash_type":line[5],"road_type":line[6],"alignment":line[7],"intersection":line[8],"cause":line[9],"street":line[10], "injuries_total":int(line[11]),"injuries_fatal":int(line[12]),"injuries incapacitating":int(line[13]),"latitude":float(line[14]),"longitude":float(line[15])}
+    dict1[line[0]] = {"speed_limit":int(line[1]), "control_dev":line[2], "weather":line[3], "lighting":line[4],"road_type":line[6],"intersection":line[8],"cause":line[9], "injuries_total":int(line[11]),"injuries_fatal":int(line[12]),"latitude":float(line[14]),"longitude":float(line[15])}
 # 0 CRASH_DATE, 1 POSTED_SPEED_LIMIT, 2 TRAFFIC_CONTROL_DEVICE, 3 DEVICE_CONDITION,4 TRAFFICWAY_TYPE,5 INTERSECTION_RELATED_I,
 # 6 PRIM_CONTRIBUTORY_CAUSE, 7 STREET_NAME,8 INJURIES_TOTAL,9 LATITUDE,10 LONGITUDE
     

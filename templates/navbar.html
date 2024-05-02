@@ -15,11 +15,12 @@
               <button class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Graphs
               </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="/speedlimits">Speed Limits</a>
-                <a class="dropdown-item" href="/trafficcontrols">Traffic Controls</a>
-                <a class="dropdown-item" href="/streettype">Street Type</a>
-              </div>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% for graph in data["5/7/19 5:03"].keys() %}
+                <li><a class="dropdown-item" href="graphs/{{graph}}">{{graph}}</a></li>
+                {% endfor %}
+
+              </ul>
             </div>
 
             </li>

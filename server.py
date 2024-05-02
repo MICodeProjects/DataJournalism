@@ -4,17 +4,16 @@ from flask import render_template
 import json
 app = Flask(__name__, static_url_path='', static_folder='static')
 
-@app.route('/about.html')
-def about():
+@app.route('/')
+def index():
     #load a current view of the data
     total=0
     f = open("data/traffic_crashes.json", "r")
     data = json.load(f)
     f.close()
-   
-    #render the template with the apporpriate data
-    return render_template('about.html', data=data)
 
+    #render the template with the apporpriate data
+    return render_template('index.html', data=data)
 
 @app.route('/accidentmap')
 def accidentmap():
@@ -22,30 +21,42 @@ def accidentmap():
     f = open("data/traffic_crashes.json", "r")
     data = json.load(f)
     f.close()
+# top left = 42.055459, -87.940923
+# bottom right = 41.640921, -87.524904
+# viewbox = "0 0 1861.5 2529.5"
+    top_left = (42.055459, -87.940923)
+    bottom_right = (41.640921, -87.524904)
+    viewbox = ((0, 0), (1861.5, 2529.5))
+    viewbox_width = viewbox[1][0]-viewbox[0][0]
+    viewbox_length = viewbox[1][1]-viewbox[0][1]
+    coords_width = top_left[0] - bottom_right[0]
+    coords_length = top_left[1] - bottom_right[1]
+
+    # changing all of the real life coordinates to svg coordinates....hope it works
+    for crash in data.keys():
+        og_lat = data[crash]["latitude"] # saving original latitude and longitude values
+        og_log = data[crash]["longitude"]
+
+        data[crash]["latitude"] = viewbox[0][0] + (viewbox_width/coords_width)*og_lat # latitude is horizontal x, longitude is vertical y
+        data[crash]["longitude"] = viewbox[0][1] + (viewbox_length/coords_length)*og_log # latitude is horizontal x, longitude is vertical y
+
+    #Filter and reformat data for ease of access in the template
+
+    return render_template('accidentmap.html', data=data)
 
 
-    return render_template('accidentmap', data=data)
-
-@app.route('/speedlimits.html')
-def speedlimits():
+@app.route('/graph/<graph_type>')
+def graph(graph_type):
     #load a current view of the data
     f = open("data/traffic_crashes.json", "r")
     data = json.load(f)
     f.close()
 
+    
+    #Filter and reformat data for ease of access in the template
 
-    return render_template('speedlimits', data=data)
+   
+    return render_template('graph.html', data=data)
 
-
-
-@app.route('/trafficcontrols')
-def trafficcontrols():
-    #load a current view of the data
-    f = open("data/traffic_crashes.json", "r")
-    data = json.load(f)
-    f.close()
-
-
-    return render_template('trafficcontrols.html', data=data)
 
 app.run(debug=True)
