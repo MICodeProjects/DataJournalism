@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="1000" height="700">
 
   <circle r="300" cx="300" cy="300" fill="maroon" />
   {% for i in range(piechart_len) %}
@@ -11,7 +11,7 @@
 
   <rect x="650" y="{{30+(600/piechart_len)*i}}" fill="maroon" fill-opacity="1" width="30" height="30"/>
   <rect x="650" y="{{30+(600/piechart_len)*i}}" fill="orange" fill-opacity="{{1-(i/piechart_len)}}" width="30" height="30"/>
-  <text x="690" y="{{50+(600/piechart_len)*i}}" text-anchor="start">{{piechart_data[i][0]}}</text>
+  <text x="690" y="{{50+(600/piechart_len)*i}}" text-anchor="start">{{piechart_data[i][0]}} - {{piechart_data[i][1]}}%</text>
 
   {% endfor %}
 

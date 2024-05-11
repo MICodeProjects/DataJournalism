@@ -1882,7 +1882,6 @@
    {% endfor %}
 
    <rect x="1350" y="100" width="600" height="270" fill="white"/>
-   <text class="title" x="1370" y="125">Legend</text>
    <text x="1370" y="150">Highway =</text>
    <rect x="1470" y="145" width="50" height="10" fill="red"/>
    <text x="1370" y="200">1 injury</text>

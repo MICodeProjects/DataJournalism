@@ -76,18 +76,18 @@ def graph(graph_type):
             barchart_data[val]+=data[crash]["injuries_total"]
     
     # turn pie chart data into percents, then sort by biggest to smallest.
-
+    if "Other" in totals.keys():
+        del totals["Other"]
     for type in totals:
         i = totals[type]
         if 100*i/data_length >=2:
             piechart_data_list[type] = round(100*i/data_length,1)
         else:
-            if "< 2% of Accidents" in piechart_data_list.keys():
-                piechart_data_list["< 2% of Accidents"] +=round(100*totals[type]/data_length,1)
+            if "Other" in piechart_data_list.keys():
+                piechart_data_list["Other"]+=100*totals[type]/data_length,1
             else:
-                piechart_data_list["< 2% of Accidents"]=round(100*totals[type]/data_length,1)
+                piechart_data_list["Other"]=100*totals[type]/data_length,1
             
-
 
     piechart_data_list = [(k, v) for k, v in piechart_data_list.items()] # k is crash type, v is value
     
@@ -132,13 +132,7 @@ def graph(graph_type):
         # the first element        
         barchart_data_list[i], barchart_data_list[min_idx] = barchart_data_list[min_idx], barchart_data_list[i]
     barchart_data_list = barchart_data_list[::-1]
-    if graph_type == "Road Type":
-        piechart_data_list.pop(0)
-        barchart_data_list.pop(0)
-    if graph_type == "Presence of Traffic Control Device":
-        piechart_data_list.pop(0)
-        barchart_data_list.pop(0)
-    
+
     print(barchart_data_list)
     print(piechart_data_list)
     print(piechart_vals)

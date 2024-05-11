@@ -14,7 +14,7 @@ for line in lines[1::]:
         line[8]="Yes"
 
     
-    dict1[line[0]] = {"Speed Limit":int(line[1]), "Presence of Traffic Control Device":line[2].lower().title(), "Weather Conditions":line[3].lower().title(), "Road Lighting":line[4].lower().title(),"Road Type":line[6].lower().title(),"Intersection Related":line[8],"Cause":line[9].lower().title(), "injuries_total":int(line[11]),"injuries_fatal":int(line[12]),"latitude":float(line[14]),"longitude":float(line[15])}
+    dict1[line[0]] = {"Speed Limit":int(line[1]), "Weather Conditions":line[3].lower().title(), "Road Lighting":line[4].lower().title(),"Road Type":line[6].lower().title(),"Intersection Related":line[8],"Cause":line[9].lower().title(), "injuries_total":int(line[11]),"injuries_fatal":int(line[12]),"latitude":float(line[14]),"longitude":float(line[15])}
 # 0 CRASH_DATE, 1 POSTED_SPEED_LIMIT, 2 TRAFFIC_CONTROL_DEVICE, 3 DEVICE_CONDITION,4 TRAFFICWAY_TYPE,5 INTERSECTION_RELATED_I,
 # 6 PRIM_CONTRIBUTORY_CAUSE, 7 STREET_NAME,8 INJURIES_TOTAL,9 LATITUDE,10 LONGITUDE
     

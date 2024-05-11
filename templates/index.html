@@ -11,24 +11,31 @@
     {% include 'navbar.html'%}
 
     <h1>About</h1>
-    <p>Speed limits are often touted as a cheap, easy way to stop speeding. Traffic control devices such as stop signs and traffic lights are hailed with creating safer roads. 
+    <p>Traffic accidents are often reduced to the individual; it was because a few drivers were drunk, or the driver was speeding, or a pedestrian didn't look both ways. Prevention measures that target the individual are prevelant too: speed limits and traffic lights are touted as easy ways to get drivers to start behaving better.
     </p>
-    <p>But is this true? Are these measures as effective at reducing fatalities as people think? Or, does the street being a 4-way intersection liken the chance of dangerous crashes more than any of these factors?</p>
+    <p>But is this true? Are these measures as effective at reducing fatalities as people think? Or, does the street being a 4-way intersection liken the chance of dangerous crashes more than any of these factors? When I started this project, I wanted to understand if environment factors like weather and road type play a role in the rate of car crashes.</p>
 
-    <p>In "Don't be Rash with Car Crash(es)", I compare data from car crashes in Chicago with 1 or more fatalities or injuries with the speed limits, traffic control devices, 
-      and street types where the accident took place. When we're building our roads, should we avoid certain street types and nail the trees with speed limits? </p>
+    <p>In "Don't be Rash with Car Crash(es)", I compare data from car crashes in Chicago with 1 or injuries with the speed limits, traffic control devices presence, street types, weather, intersection status, lighting, and official cause. I also created a graph documenting where in Chicago the accidents occured and how dangerous they were. When we're building our roads, should wavoid certain street types and nail the trees with speed limits? </p>
       
       <p>What measures, if any, could reduce the chance of dangerous crashes?</p>
-
-    <h2>Prototypes</h2>
+    <h2>Process</h2>
+    <p>I decided to do car crashes because I am interested in urban planning. I picked data from the police department of Chicago on data.gov because the crash data was very detailed. However, it was nearly a million lines long so I had to remove several factors. It was at this point I decided to only examine crashes with at least one injury in order to condense the data further and focus on causes of only serious crashes.</p>
+    <br>
+    <h3>Prototypes</h3>
     <img src="prototype10.jpg" alt="prototype 1 part 1" width="150">
     <img src="prototype11.jpg" alt="prototype 1 part 2" width="150">
-    <p>The first prototype was this: it was a little messy and the graphs were not suited to the message. After feedback I revised them.</p>
+    <p>The first prototype was this: it was a little messy, and I misunderstood the prompt when I put the bar graphs on top of the accident map. After feedback complaining of messiness, readability, and vision, I revised them. I added pie charts and line graphs instead of just bar charts so the reader could understand both the frequency, rate over time, and average danger associated with each factor. </p>
     <img src="prototype20.jpg" alt="prototype 2 part 1" width="150">
     <img src="prototype21.jpg" alt="prototype 2 part 2" width="150">
+    <br>
+    <p>After the prototypes were complete, I made a navbar using bootstrap.</p>
+    <br>
+    <p>Then, I began the work on the accident map. I used google maps to help me find coordinates on my svg that matched coordinates from the crashe, and coded each crash to increase in radius along with fatalities.</p>
+    <p>Finally, I coded the bar graphs. At this point I changed the color scheme from blue in my prototypes to orange and red.</p>
+    <p>I coded the pie charts last, as they were the most difficult and required a lot of outside research</p>
 
-    
-
+    <h2>Takeaways</h2>
+    <p>I was surprized by the lack of correlation between speed limit and crash fatalities, and how intersections did not seem to affect </p>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
