@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
-<svg viewBox="0 0 1861.5 2529.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg viewBox="0 0 1861.5 2529.5" width="1861.5" height="2529.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <pattern id="e" patternTransform="translate(788.75 2011.7) scale(.2724)" xlink:href="#a"/>
  <pattern id="f" patternTransform="translate(788.75 2011.7) scale(.2724)" xlink:href="#a"/>
  <pattern id="g" patternTransform="translate(788.75 2011.7) scale(.2724)" xlink:href="#a"/>
@@ -937,4 +937,13 @@
   <text x="44.88" y="2401.78"><tspan x="44.88" y="2401.78" dx="0" dy="0">4 Kilometers</tspan></text>
   <text x="219.88" y="2531.96"><tspan x="219.88" y="2531.96" dx="14.14" dy="-4.72">4 Miles</tspan></text>
  </g>
+
+{% for crash in data.keys() %}
+    <circle cx="{{data[crash]["latitude"]}}" cy="{{data[crash]["longitude"]}}" r="10"/>
+    console.log({{data[crash]["latitude"]}})
+    console.log({{data[crash]["longitude"]}})
+
+{% endfor %}
+    <circle cx="0" cy="0" r="100"/>
+
 </svg>
