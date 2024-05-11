@@ -1,4 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" >
+{% for i in range(barchart_data|count) %}
+<text class="label" x="100" text-anchor="end" y="{{20*i}}">{{barchart_data[i][0]}}</text>
+<rect x="110" fill="pink" y="{{100+60*i}}" width="{{barchart_data[i][1]*500}}" height="45"/>
+<text x="{{110+barchart_data[i][1]*500}}" text-anchor="start" y="{{125+60*i}}">{{barchart_data[i][1]}}</text>
+{% endfor %}
+<line x1="100" y1="100" x2="100" y2="{{100+(barchart_data|count)*60}}" style="stroke:black; stroke-width:8"/>
+<text>
 
 
 

@@ -1,12 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
 
-  <circle height="50" width="50" r="10" cx="10" cy="10" fill="white" />
-  {% for i in range(piechart_data|length) %}
-  <circle r="5" cx="10" cy="10" fill="transparent" fill-opacity="0"
-          stroke="pink"
-          stroke-width="10"
-          stroke_opacity="{{1/(piechart_data|count)}}"
-          stroke-dasharray="calc({{piechart_vals[i]}} * 31.4 / 100) 31.4"/>
-    {% endfor %}
+  <circle r="300" cx="300" cy="300" fill="maroon" />
+  {% for i in range(piechart_len) %}
+    <circle r="150" cx="300" cy="300" fill="transparent"
+            stroke="orange"
+            stroke-width="300"
+            stroke-dasharray="calc({{piechart_vals[i]}} * 942 / 100) 942" 
+            stroke-opacity="{{1-(i/piechart_len)}}"
+            transform="rotate(-90) translate(-600)" />
+
+  <rect x="650" y="{{30+(600/piechart_len)*i}}" fill="maroon" fill-opacity="1" width="30" height="30"/>
+  <rect x="650" y="{{30+(600/piechart_len)*i}}" fill="orange" fill-opacity="{{1-(i/piechart_len)}}" width="30" height="30"/>
+  <text x="690" y="{{50+(600/piechart_len)*i}}" text-anchor="start">{{piechart_data[i][0]}}</text>
+
+  {% endfor %}
 
 </svg>
+
+
+</svg>
+
